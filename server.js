@@ -19,12 +19,6 @@ app.get('/webhook', function (req, res) {
     // res.sendStatus(403)
   }
 })
-app.post('/webhook/me/thread_settings?access_token=EAADU9SVyvZAQBABOk71YINxYcHTkuIRYgxkmvjWTisXMtitUYT6tmEN70f5RGsvZCnKFkZCJE8H0IeaGwUQT5agzY5ZADRJWfnoHJ7sbdaZCzjz2LaPl7B2hb7ZArxCpikCfCb4j1SOsUyLapBTBvZBNS44Efh9tRthMg8XdVzGmgZDZD', function (req, res) {
-  "setting_type":"greeting",
-  "greeting":{
-    "text":"Timeless apparel for the masses."
-  }
-})
 app.post('/webhook', function (req, res) {
   var data = req.body
   // Make sure this is a page subscription
