@@ -148,8 +148,9 @@ function sendGenericMessage (recipientId) {
             image_url: 'http://messengerdemo.parseapp.com/img/rift.png',
             buttons: [{
               type: 'web_url',
-              url: 'https://www.oculus.com/en-us/rift/',
-              title: 'Open Web URL'
+              // url: 'https://www.oculus.com/en-us/rift/',
+              title: 'Open Web URL',
+              payload: 'eiei'
             }, {
               type: 'postback',
               title: 'Call Postback',
