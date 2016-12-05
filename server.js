@@ -133,25 +133,25 @@ function callSendAPI (messageData) {
 }
 function sendButton (recipientId) {
   var messageData = {
-    'recipient':{
-    'id': recipientId
+    "recipient":{
+      "id":"USER_ID"
     },
-    'message':{
-      'attachment':{
-        'type':'template',
-        'payload':{
-          'template_type':'button',
-          'text':'What do you want to do next?',
-          'buttons':[
+    "message":{
+      "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"button",
+          "text":"What do you want to do next?",
+          "buttons":[
             {
-              'type':'web_url',
-              'url':'https://petersapparel.parseapp.com',
-              'title':'Show Website'
+              "type":"web_url",
+              "url":"https://petersapparel.parseapp.com",
+              "title":"Show Website"
             },
             {
-              'type':'postback',
-              'title':'Start Chatting',
-              'payload':'USER_DEFINED_PAYLOAD'
+              "type":"postback",
+              "title":"Start Chatting",
+              "payload":"USER_DEFINED_PAYLOAD"
             }
           ]
         }
@@ -162,19 +162,19 @@ function sendButton (recipientId) {
 }
 function sendList (recipientId) {
   var messageData = {
-    'recipient':{
-      'id':'RECIPIENT_ID'
-    }, 'message': {
-      'attachment': {
-          'type': 'template',
-          'payload': {
-              'template_type': 'list',
-              'elements': [
+    recipient:{
+      id:'RECIPIENT_ID'
+    }, message: {
+      attachment: {
+          type: 'template',
+          payload: {
+              template_type: 'list',
+              elements: [
                   {
-                      'title': 'Classic T-Shirt Collection',
-                      'image_url': 'https://peterssendreceiveapp.ngrok.io/img/collection.png',
-                      'subtitle': 'See all our colors',
-                      'default_action': {
+                      title: 'Classic T-Shirt Collection',
+                      image_url: 'https://peterssendreceiveapp.ngrok.io/img/collection.png',
+                      subtitle: 'See all our colors',
+                      default_action: {
                           'type': 'web_url',
                           'url': 'https://peterssendreceiveapp.ngrok.io/shop_collection',
                           'messenger_extensions': true,
@@ -269,6 +269,7 @@ function sendList (recipientId) {
           }
       }
     }
+  }
     callSendAPI(messageData)
   }
   function sendGenericMessage (recipientId) {
