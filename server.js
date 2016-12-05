@@ -57,8 +57,8 @@ function receivedPostback (event) {
   // button for Structured Messages.
   var payload = event.postback.payload
 
-  console.log("Received postback for user %d and page %d with payload '%s' " +
-    "at %d", senderID, recipientID, payload, timeOfPostback)
+  console.log('Received postback for user %d and page %d with payload '%s' ' +
+    'at %d', senderID, recipientID, payload, timeOfPostback)
 
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
@@ -87,6 +87,7 @@ function receivedMessage (event) {
         sendGenericMessage(senderID)
         break
       case 'button': sendButton(senderID)
+      case 'list': sendList(senderID)
       default:
         sendTextMessage(senderID, 'e')
     }
@@ -132,25 +133,25 @@ function callSendAPI (messageData) {
 }
 function sendButton (recipientId) {
   var messageData = {
-    "recipient":{
-    "id": recipientId
+    'recipient':{
+    'id': recipientId
     },
-    "message":{
-      "attachment":{
-        "type":"template",
-        "payload":{
-          "template_type":"button",
-          "text":"What do you want to do next?",
-          "buttons":[
+    'message':{
+      'attachment':{
+        'type':'template',
+        'payload':{
+          'template_type':'button',
+          'text':'What do you want to do next?',
+          'buttons':[
             {
-              "type":"web_url",
-              "url":"https://petersapparel.parseapp.com",
-              "title":"Show Website"
+              'type':'web_url',
+              'url':'https://petersapparel.parseapp.com',
+              'title':'Show Website'
             },
             {
-              "type":"postback",
-              "title":"Start Chatting",
-              "payload":"USER_DEFINED_PAYLOAD"
+              'type':'postback',
+              'title':'Start Chatting',
+              'payload':'USER_DEFINED_PAYLOAD'
             }
           ]
         }
@@ -159,46 +160,158 @@ function sendButton (recipientId) {
   }
   callSendAPI(messageData)
 }
-function sendGenericMessage (recipientId) {
+function sendList (recipientId) {
   var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: 'template',
-        payload: {
-          template_type: 'generic',
-          elements: [{
-            title: 'rift',
-            subtitle: 'Next-generation virtual reality',
-            item_url: 'https://www.oculus.com/en-us/rift/',
-            image_url: 'http://messengerdemo.parseapp.com/img/rift.png',
-            buttons: [{
-              type: 'postback',
-              // url: 'https://www.oculus.com/en-us/rift/',
-              title: 'Open Web URL',
-              payload: 'eiei'
+    'recipient':{
+      'id':'RECIPIENT_ID'
+    }, 'message': {
+      'attachment': {
+          'type': 'template',
+          'payload': {
+              'template_type': 'list',
+              'elements': [
+                  {
+                      'title': 'Classic T-Shirt Collection',
+                      'image_url': 'https://peterssendreceiveapp.ngrok.io/img/collection.png',
+                      'subtitle': 'See all our colors',
+                      'default_action': {
+                          'type': 'web_url',
+                          'url': 'https://peterssendreceiveapp.ngrok.io/shop_collection',
+                          'messenger_extensions': true,
+                          'webview_height_ratio': 'tall',
+                          'fallback_url': 'https://peterssendreceiveapp.ngrok.io/'
+                      },
+                      'buttons': [
+                          {
+                              'title': 'View',
+                              'type': 'web_url',
+                              'url': 'https://peterssendreceiveapp.ngrok.io/collection',
+                              'messenger_extensions': true,
+                              'webview_height_ratio': 'tall',
+                              'fallback_url': 'https://peterssendreceiveapp.ngrok.io/'
+                          }
+                      ]
+                  },
+                  {
+                      'title': 'Classic White T-Shirt',
+                      'image_url': 'https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png',
+                      'subtitle': '100% Cotton, 200% Comfortable',
+                      'default_action': {
+                          'type': 'web_url',
+                          'url': 'https://peterssendreceiveapp.ngrok.io/view?item=100',
+                          'messenger_extensions': true,
+                          'webview_height_ratio': 'tall',
+                          'fallback_url': 'https://peterssendreceiveapp.ngrok.io/'
+                      },
+                      'buttons': [
+                          {
+                              'title': 'Shop Now',
+                              'type': 'web_url',
+                              'url': 'https://peterssendreceiveapp.ngrok.io/shop?item=100',
+                              'messenger_extensions': true,
+                              'webview_height_ratio': 'tall',
+                              'fallback_url': 'https://peterssendreceiveapp.ngrok.io/'
+                          }
+                      ]
+                  },
+                  {
+                      'title': 'Classic Blue T-Shirt',
+                      'image_url': 'https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png',
+                      'subtitle': '100% Cotton, 200% Comfortable',
+                      'default_action': {
+                          'type': 'web_url',
+                          'url': 'https://peterssendreceiveapp.ngrok.io/view?item=101',
+                          'messenger_extensions': true,
+                          'webview_height_ratio': 'tall',
+                          'fallback_url': 'https://peterssendreceiveapp.ngrok.io/'
+                      },
+                      'buttons': [
+                          {
+                              'title': 'Shop Now',
+                              'type': 'web_url',
+                              'url': 'https://peterssendreceiveapp.ngrok.io/shop?item=101',
+                              'messenger_extensions': true,
+                              'webview_height_ratio': 'tall',
+                              'fallback_url': 'https://peterssendreceiveapp.ngrok.io/'
+                          }
+                      ]
+                  },
+                  {
+                      'title': 'Classic Black T-Shirt',
+                      'image_url': 'https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png',
+                      'subtitle': '100% Cotton, 200% Comfortable',
+                      'default_action': {
+                          'type': 'web_url',
+                          'url': 'https://peterssendreceiveapp.ngrok.io/view?item=102',
+                          'messenger_extensions': true,
+                          'webview_height_ratio': 'tall',
+                          'fallback_url': 'https://peterssendreceiveapp.ngrok.io/'
+                      },
+                      'buttons': [
+                          {
+                              'title': 'Shop Now',
+                              'type': 'web_url',
+                              'url': 'https://peterssendreceiveapp.ngrok.io/shop?item=102',
+                              'messenger_extensions': true,
+                              'webview_height_ratio': 'tall',
+                              'fallback_url': 'https://peterssendreceiveapp.ngrok.io/'
+                          }
+                      ]
+                  }
+              ],
+               'buttons': [
+                  {
+                      'title': 'View More',
+                      'type': 'postback',
+                      'payload': 'payload'
+                  }
+              ]
+          }
+      }
+    }
+    callSendAPI(messageData)
+  }
+  function sendGenericMessage (recipientId) {
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: 'template',
+          payload: {
+            template_type: 'generic',
+            elements: [{
+              title: 'rift',
+              subtitle: 'Next-generation virtual reality',
+              item_url: 'https://www.oculus.com/en-us/rift/',
+              image_url: 'http://messengerdemo.parseapp.com/img/rift.png',
+              buttons: [{
+                type: 'postback',
+                // url: 'https://www.oculus.com/en-us/rift/',
+                title: 'Open Web URL',
+                payload: 'eiei'
+              }, {
+                type: 'postback',
+                title: 'Call Postback',
+                payload: 'Payload for first bubble'
+              }]
             }, {
-              type: 'postback',
-              title: 'Call Postback',
-              payload: 'Payload for first bubble'
+              title: 'touch',
+              subtitle: 'Your Hands, Now in VR',
+              item_url: 'https://www.oculus.com/en-us/touch/',
+              image_url: 'http://messengerdemo.parseapp.com/img/touch.png',
+              buttons: [{
+                type: 'web_url',
+                url: 'https://www.oculus.com/en-us/touch/',
+                title: 'Open Web URL'
+              }, {
+                type: 'postback',
+                title: 'Call Postback',
+                payload: 'Payload for second bubble'
+              }]
             }]
-          }, {
-            title: 'touch',
-            subtitle: 'Your Hands, Now in VR',
-            item_url: 'https://www.oculus.com/en-us/touch/',
-            image_url: 'http://messengerdemo.parseapp.com/img/touch.png',
-            buttons: [{
-              type: 'web_url',
-              url: 'https://www.oculus.com/en-us/touch/',
-              title: 'Open Web URL'
-            }, {
-              type: 'postback',
-              title: 'Call Postback',
-              payload: 'Payload for second bubble'
-            }]
-          }]
+          }
         }
       }
     }
