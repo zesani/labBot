@@ -19,6 +19,12 @@ app.get('/webhook', function (req, res) {
     // res.sendStatus(403)
   }
 })
+app.post('/webhook/me/thread_settings?access_token=EAADU9SVyvZAQBABOk71YINxYcHTkuIRYgxkmvjWTisXMtitUYT6tmEN70f5RGsvZCnKFkZCJE8H0IeaGwUQT5agzY5ZADRJWfnoHJ7sbdaZCzjz2LaPl7B2hb7ZArxCpikCfCb4j1SOsUyLapBTBvZBNS44Efh9tRthMg8XdVzGmgZDZD', function (req, res) {
+  "setting_type":"greeting",
+  "greeting":{
+    "text":"Timeless apparel for the masses."
+  }
+})
 app.post('/webhook', function (req, res) {
   var data = req.body
   // Make sure this is a page subscription
@@ -86,9 +92,9 @@ function receivedMessage (event) {
       case 'generic':
         sendGenericMessage(senderID)
         break
-
+      case 'button': sendButton(senderID)
       default:
-        sendTextMessage(senderID, messageText)
+        sendTextMessage(senderID, 'e')
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, 'Message with attachment received')
@@ -130,7 +136,35 @@ function callSendAPI (messageData) {
     }
   })
 }
-
+function sendButton (recipientId) {
+  var messageData = {
+    "recipient":{
+    "id": recipientId
+    },
+    "message":{
+      "attachment":{
+        "type":"template",
+        "payload":{
+          "template_type":"button",
+          "text":"What do you want to do next?",
+          "buttons":[
+            {
+              "type":"web_url",
+              "url":"https://petersapparel.parseapp.com",
+              "title":"Show Website"
+            },
+            {
+              "type":"postback",
+              "title":"Start Chatting",
+              "payload":"USER_DEFINED_PAYLOAD"
+            }
+          ]
+        }
+      }
+    }
+  }
+  callSendAPI(messageData)
+}
 function sendGenericMessage (recipientId) {
   var messageData = {
     recipient: {
