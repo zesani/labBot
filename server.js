@@ -29,9 +29,11 @@ app.post('/webhook', function (req, res) {
       var timeOfEvent = entry.time
 
       // Iterate over each messaging event
-      entry.messaging.forEach(function(event) {
+      entry.messaging.forEach(function (event) {
         if (event.message) {
           receivedMessage(event)
+        } else if (event.postback) {
+          receivedPostback(messagingEvent)
         } else {
           console.log('Webhook received unknown event: ', event)
         }
@@ -46,8 +48,23 @@ app.post('/webhook', function (req, res) {
     res.sendStatus(200)
   }
 })
+function receivedPostback (event) {
+  var senderID = event.sender.id
+  var recipientID = event.recipient.id
+  var timeOfPostback = event.timestamp
 
-function receivedMessage(event) {
+  // The 'payload' param is a developer-defined field which is set in a postback
+  // button for Structured Messages.
+  var payload = event.postback.payload
+
+  console.log("Received postback for user %d and page %d with payload '%s' " +
+    "at %d", senderID, recipientID, payload, timeOfPostback)
+
+  // When a postback is called, we'll send a message back to the sender to
+  // let them know it was successful
+  sendTextMessage(senderID, 'Postback called')
+}
+function receivedMessage (event) {
   var senderID = event.sender.id
   var recipientID = event.recipient.id
   var timeOfMessage = event.timestamp
@@ -62,8 +79,7 @@ function receivedMessage(event) {
   var messageText = message.text
   var messageAttachments = message.attachments
 
-  if (messageText) {
-
+  if(messageText) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageText) {
@@ -81,7 +97,7 @@ function receivedMessage(event) {
 // function sendGenericMessage (recipientId, messageText) {
 //   // To be expanded in later sections
 // }
-function sendTextMessage(recipientId, messageText) {
+function sendTextMessage (recipientId, messageText) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -101,7 +117,7 @@ function callSendAPI (messageData) {
     json: messageData
 
   }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode === 200) {
       var recipientId = body.recipient_id
       var messageId = body.message_id
 
