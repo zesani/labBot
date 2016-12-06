@@ -88,7 +88,7 @@ function receivedMessage (event) {
         break
       case 'receipt': sendReceipt(senderID)
         break
-        case 'list': sendList(senderID)
+        case 'list': sendList(recipientID)
         break
       default:
         sendTextMessage(senderID, 'e')
