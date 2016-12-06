@@ -86,7 +86,7 @@ function receivedMessage (event) {
         break
       case 'button': sendButton(senderID)
         break
-      case 'list': sendList(senderID)
+      case 'receipt': sendReceipt(senderID)
         break
       default:
         sendTextMessage(senderID, 'e')
@@ -160,7 +160,7 @@ function sendButton (recipientId) {
   }
   callSendAPI(messageData)
 }
-function sendList (recipientId) {
+function sendReceipt (recipientId) {
   var messageData = {
     "recipient":{
        "id":recipientId
