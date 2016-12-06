@@ -135,7 +135,7 @@ function callSendAPI (messageData) {
 function sendButton (recipientId) {
   var messageData = {
     "recipient":{
-      "id":"USER_ID"
+      "id":recipientId
     },
     "message":{
       "attachment":{
@@ -164,7 +164,7 @@ function sendButton (recipientId) {
 function sendList (recipientId) {
   var messageData = {
     "recipient":{
-    "id":"RECIPIENT_ID"
+    "id":recipientId
     }, "message": {
       "attachment": {
           "type": "template",
