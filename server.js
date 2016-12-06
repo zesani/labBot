@@ -164,110 +164,61 @@ function sendList (recipientId) {
   var messageData = {
     "recipient":{
        "id":recipientId
-     }, "message": {
-       "attachment": {
-           "type": "template",
-           "payload": {
-               "template_type": "list",
-               "top_element_style": "compact",
-               "elements": [
-                   {
-                       "title": "Classic White T-Shirt",
-                       "image_url": "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
-                       "subtitle": "100% Cotton, 200% Comfortable",
-                       "default_action": {
-                           "type": "web_url",
-                           "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
-                           "messenger_extensions": true,
-                           "webview_height_ratio": "tall",
-                           "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                       },
-                       "buttons": [
-                           {
-                               "title": "Buy",
-                               "type": "web_url",
-                               "url": "https://peterssendreceiveapp.ngrok.io/shop?item=100",
-                               "messenger_extensions": true,
-                               "webview_height_ratio": "tall",
-                               "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                           }
-                       ]
-                   },
-                   {
-                       "title": "Classic Blue T-Shirt",
-                       "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
-                       "subtitle": "100% Cotton, 200% Comfortable",
-                       "default_action": {
-                           "type": "web_url",
-                           "url": "https://peterssendreceiveapp.ngrok.io/view?item=101",
-                           "messenger_extensions": true,
-                           "webview_height_ratio": "tall",
-                           "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                       },
-                       "buttons": [
-                           {
-                               "title": "Buy",
-                               "type": "web_url",
-                               "url": "https://peterssendreceiveapp.ngrok.io/shop?item=101",
-                               "messenger_extensions": true,
-                               "webview_height_ratio": "tall",
-                               "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                           }
-                       ]
-                   },
-                   {
-                       "title": "Classic Black T-Shirt",
-                       "image_url": "https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png",
-                       "subtitle": "100% Cotton, 200% Comfortable",
-                       "default_action": {
-                           "type": "web_url",
-                           "url": "https://peterssendreceiveapp.ngrok.io/view?item=102",
-                           "messenger_extensions": true,
-                           "webview_height_ratio": "tall",
-                           "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                       },
-                       "buttons": [
-                           {
-                               "title": "Buy",
-                               "type": "web_url",
-                               "url": "https://peterssendreceiveapp.ngrok.io/shop?item=102",
-                               "messenger_extensions": true,
-                               "webview_height_ratio": "tall",
-                               "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                           }
-                       ]
-                   },
-                   {
-                       "title": "Classic Gray T-Shirt",
-                       "image_url": "https://peterssendreceiveapp.ngrok.io/img/gray-t-shirt.png",
-                       "subtitle": "100% Cotton, 200% Comfortable",
-                       "default_action": {
-                           "type": "web_url",
-                           "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-                           "messenger_extensions": true,
-                           "webview_height_ratio": "tall",
-                           "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                       },
-                       "buttons": [
-                           {
-                               "title": "Buy",
-                               "type": "web_url",
-                               "url": "https://peterssendreceiveapp.ngrok.io/shop?item=103",
-                               "messenger_extensions": true,
-                               "webview_height_ratio": "tall",
-                               "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                           }
-                       ]
-                   }
-               ],
-                "buttons": [
-                   {
-                       "title": "View More",
-                       "type": "postback",
-                       "payload": "payload"
-                   }
-               ]
-           }
+     },
+     "message":{
+       "attachment":{
+         "type":"template",
+         "payload":{
+           "template_type":"receipt",
+           "recipient_name":"Stephane Crozatier",
+           "order_number":"12345678902",
+           "currency":"USD",
+           "payment_method":"Visa 2345",
+           "order_url":"http://petersapparel.parseapp.com/order?order_id=123456",
+           "timestamp":"1428444852",
+           "elements":[
+             {
+               "title":"Classic White T-Shirt",
+               "subtitle":"100% Soft and Luxurious Cotton",
+               "quantity":2,
+               "price":50,
+               "currency":"USD",
+               "image_url":"http://petersapparel.parseapp.com/img/whiteshirt.png"
+             },
+             {
+               "title":"Classic Gray T-Shirt",
+               "subtitle":"100% Soft and Luxurious Cotton",
+               "quantity":1,
+               "price":25,
+               "currency":"USD",
+               "image_url":"http://petersapparel.parseapp.com/img/grayshirt.png"
+             }
+           ],
+           "address":{
+             "street_1":"1 Hacker Way",
+             "street_2":"",
+             "city":"Menlo Park",
+             "postal_code":"94025",
+             "state":"CA",
+             "country":"US"
+           },
+           "summary":{
+             "subtotal":75.00,
+             "shipping_cost":4.95,
+             "total_tax":6.19,
+             "total_cost":56.14
+           },
+           "adjustments":[
+             {
+               "name":"New Customer Discount",
+               "amount":20
+             },
+             {
+               "name":"$10 Off Coupon",
+               "amount":10
+             }
+           ]
+         }
        }
      }
     }
