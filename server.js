@@ -86,7 +86,9 @@ function receivedMessage (event) {
         sendGenericMessage(senderID)
         break
       case 'button': sendButton(senderID)
+      break
       case 'list': sendList(senderID)
+      break
       default:
         sendTextMessage(senderID, 'e')
     }
