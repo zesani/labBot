@@ -3,7 +3,6 @@ var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
 var rest = require('rest')
-var x = ''
 app.use(bodyParser.json())
 app.set('port', (process.env.PORT || 4000))
 app.use(bodyParser.urlencoded({extended: false}))
@@ -63,31 +62,25 @@ function receivedMessage(event) {
   var messageAttachments = message.attachments;
 
   if (messageText) {
-    if (messageText === 'London') {
-      sendTextMessage(senderID, "request")
-      // rest('http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
-      //   console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
-      //   console.log('response: ', response)
-      //   x = JSON.parse(response)
-      //   console.log(typeof x)
-      // })
-      // sendTextMessage(senderID, x.substring(1, 40))
+    var res = {}
+    var test = ''
+    if (messageText) {
+      sendTextMessage(senderID, 'request')
       rest('http://api.openweathermap.org/data/2.5/weather?q=' + messageText + ',uk&appid=0635e78a93c863934f5d9af02d1db74a').then(function (response) {
         console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('response: ', response.entity)
-        x = JSON.parse(response)
-        sendTextMessage(senderID, response.entity.substring(1, 40))
+        res = JSON.parse(response)
+
       })
+      test += res.weather
+      sendTextMessage(senderID, test)
     }
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageText) {
       case 'generic':
-        sendGenericMessage(senderID);
-        break;
-
-      default:
-        sendTextMessage(senderID, messageText);
+        sendGenericMessage(senderID)
+        break
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
