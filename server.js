@@ -3,7 +3,7 @@ var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
 var rest = require('rest')
-
+var x = ''
 app.use(bodyParser.json())
 app.set('port', (process.env.PORT || 4000))
 app.use(bodyParser.urlencoded({extended: false}))
@@ -67,9 +67,10 @@ function receivedMessage(event) {
       sendTextMessage(senderID, "ควยเอ้ย ไม่รู้ request")
       rest('http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
         console.log('response: ', response.entity)
-          sendTextMessage(senderID, response.entity)
+        x = response.entity
         console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
       })
+      sendTextMessage(senderID, x)
     }
 
     // If we receive a text message, check to see if it matches a keyword
