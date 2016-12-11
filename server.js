@@ -64,7 +64,7 @@ function receivedMessage(event) {
 
   if (messageText) {
       sendTextMessage(senderID, "request")
-      rest('http://api.openweathermap.org/data/2.5/weather?q=' + messageText + ',uk&appid=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
+      rest('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
         console.log('response: ', response)
         x = JSON.parse(response)
         console.log(typeof x)
