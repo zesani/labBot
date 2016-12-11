@@ -66,7 +66,7 @@ function receivedMessage(event) {
     if (messageText === 'hello') {
       sendTextMessage(senderID, "ควยเอ้ย ไม่รู้ request")
       rest('http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
-        console.log('response: ', response.entity)
+        console.log('response: ', response.entity.city)
         x = response.entity
         console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
       })
