@@ -72,7 +72,7 @@ function receivedMessage(event) {
         res = JSON.parse(response)
 
       })
-      test += res.weather
+      test += res.weather.main
       sendTextMessage(senderID, test)
     }
     // If we receive a text message, check to see if it matches a keyword
