@@ -63,7 +63,7 @@ function receivedMessage(event) {
 
   if (messageText) {
     var res
-    var text = ''
+    var text = []
     if (messageText) {
       sendTextMessage(senderID, 'request')
       rest('http://api.openweathermap.org/data/2.5/weather?q=' + messageText + ',uk&appid=0635e78a93c863934f5d9af02d1db74a').then(function (response) {
@@ -73,20 +73,24 @@ function receivedMessage(event) {
         console.log('test////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('temp: ', res.main)
 
-
-        setTimeout(function () {
-          text = 'วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp
-          sendTextMessage(senderID, text) }, 2000)
-        // text = 'สภาพอากาศ ' + res.weather.main
-
-        setTimeout(function () {
-          text = 'อุณหภูมิต่ำสุด ' + res.main.temp_min
-          sendTextMessage(senderID, text)
-        }, 3000)
-        setTimeout(function () {
-          text = 'อุณหภูมิสูงสุด ' + res.main.temp_max
-          sendTextMessage(senderID, text) 
-        }, 4000)
+        text.push('วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp)
+        text.push('อุณหภูมิต่ำสุด ' + res.main.temp_min)
+        text.push('อุณหภูมิสูงสุด ' + res.main.temp_max)
+        text.forEach(text => {
+         sendTextMessage(senderID, text)
+        })
+        // setTimeout(function () {
+        //   text = 'วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp
+        //   sendTextMessage(senderID, text) }, 2000)
+        //
+        // setTimeout(function () {
+        //   text = 'อุณหภูมิต่ำสุด ' + res.main.temp_min
+        //   sendTextMessage(senderID, text)
+        // }, 3000)
+        // setTimeout(function () {
+        //   text = 'อุณหภูมิสูงสุด ' + res.main.temp_max
+        //   sendTextMessage(senderID, text)
+        // }, 4000)
       })
 
       // test += res.main
