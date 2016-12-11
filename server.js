@@ -76,17 +76,17 @@ function receivedMessage(event) {
 
         setTimeout(function () {
           text = 'วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp
-          sendTextMessage(senderID, text) }, 500)
+          sendTextMessage(senderID, text) }, 2000)
         // text = 'สภาพอากาศ ' + res.weather.main
 
         setTimeout(function () {
           text = 'อุณหภูมิต่ำสุด ' + res.main.temp_min
           sendTextMessage(senderID, text)
-        }, 1000)
+        }, 3000)
         setTimeout(function () {
           text = 'อุณหภูมิสูงสุด ' + res.main.temp_max
           sendTextMessage(senderID, text) 
-        }, 1500)
+        }, 4000)
       })
 
       // test += res.main
