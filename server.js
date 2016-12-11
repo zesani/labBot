@@ -63,7 +63,7 @@ function receivedMessage(event) {
   var messageAttachments = message.attachments;
 
   if (messageText) {
-    if (messageText === 'hello') {
+    if (messageText === 'London') {
       sendTextMessage(senderID, "request")
       // rest('http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
       //   console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
@@ -72,7 +72,7 @@ function receivedMessage(event) {
       //   console.log(typeof x)
       // })
       // sendTextMessage(senderID, x.substring(1, 40))
-      rest('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
+      rest('http://api.openweathermap.org/data/2.5/weather?q=' + messageText + ',uk&appid=0635e78a93c863934f5d9af02d1db74a').then(function (response) {
         console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('response: ', response.entity)
         x = JSON.parse(response)
