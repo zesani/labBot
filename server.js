@@ -73,12 +73,13 @@ function receivedMessage(event) {
         console.log('test////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('temp: ', res.main)
         text = 'วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp
-        sendTextMessage(senderID, text)
+
+        setTimeout(function () {sendTextMessage(senderID, text) }, 500)
         // text = 'สภาพอากาศ ' + res.weather.main
         text = 'อุณหภูมิต่ำสุด ' + res.main.temp_min
-        sendTextMessage(senderID, text)
+        setTimeout(function () {sendTextMessage(senderID, text) }, 1000)
         text = 'อุณหภูมิสูงสุด ' + res.main.temp_max
-        sendTextMessage(senderID, text)
+        setTimeout(function () {sendTextMessage(senderID, text) }, 1500)
       })
 
       // test += res.main
@@ -86,11 +87,6 @@ function receivedMessage(event) {
     }
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
-    switch (messageText) {
-      case 'generic':
-        sendGenericMessage(senderID)
-        break
-    }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
