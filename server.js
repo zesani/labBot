@@ -66,11 +66,11 @@ function receivedMessage(event) {
       sendTextMessage(senderID, "request")
       rest('http://api.openweathermap.org/data/2.5/weather?q=' + messageText + ',uk&appid=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
         console.log('response: ', response.entity)
-        x = JSON.parse(response.entity)
+        x = JSON.parse(response)
         console.log(typeof x)
         console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
       })
-      sendTextMessage(senderID, x.substring(1, 100))
+      sendTextMessage(senderID, x.substring(1, 40))
 
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
