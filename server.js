@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.get('/webhook', function (req, res) {
-  var key = 'EAADU9SVyvZAQBABOk71YINxYcHTkuIRYgxkmvjWTisXMtitUYT6tmEN70f5RGsvZCnKFkZCJE8H0IeaGwUQT5agzY5ZADRJWfnoHJ7sbdaZCzjz2LaPl7B2hb7ZArxCpikCfCb4j1SOsUyLapBTBvZBNS44Efh9tRthMg8XdVzGmgZDZD'
+  var key = 'EAAFC8WXwYTMBAAd75BDHfEoDMyEI96zYXLQG8haFKgu5LvELFyjykV60dkD2oekY00ZAid7Vq7XBg06T9aydZAMzR2UiDdf6040M4oJSZAp8jCoePZCqM34KRGay5ZAzStGC6FL1SK6XdTVWnDo8ZAYU4HWSWCZBw6iHrhZBfc8S5wZDZD'
   if (req.query['hub.mode'] === 'subscribe' &&
       req.query['hub.verify_token'] === key) {
     console.log('Validating webhook')
@@ -121,7 +121,7 @@ function sendTextMessage (recipientId, messageText) {
 function callSendAPI (messageData) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: { access_token: 'EAADU9SVyvZAQBABOk71YINxYcHTkuIRYgxkmvjWTisXMtitUYT6tmEN70f5RGsvZCnKFkZCJE8H0IeaGwUQT5agzY5ZADRJWfnoHJ7sbdaZCzjz2LaPl7B2hb7ZArxCpikCfCb4j1SOsUyLapBTBvZBNS44Efh9tRthMg8XdVzGmgZDZD' },
+    qs: { access_token: 'EAAFC8WXwYTMBAAd75BDHfEoDMyEI96zYXLQG8haFKgu5LvELFyjykV60dkD2oekY00ZAid7Vq7XBg06T9aydZAMzR2UiDdf6040M4oJSZAp8jCoePZCqM34KRGay5ZAzStGC6FL1SK6XdTVWnDo8ZAYU4HWSWCZBw6iHrhZBfc8S5wZDZD' },
     method: 'POST',
     json: messageData
 
