@@ -72,14 +72,21 @@ function receivedMessage(event) {
         res = JSON.parse(response.entity)
         console.log('test////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('temp: ', res.main)
-        text = 'วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp
 
-        setTimeout(function () {sendTextMessage(senderID, text) }, 500)
+
+        setTimeout(function () {
+          text = 'วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp
+          sendTextMessage(senderID, text) }, 500)
         // text = 'สภาพอากาศ ' + res.weather.main
-        text = 'อุณหภูมิต่ำสุด ' + res.main.temp_min
-        setTimeout(function () {sendTextMessage(senderID, text) }, 1000)
-        text = 'อุณหภูมิสูงสุด ' + res.main.temp_max
-        setTimeout(function () {sendTextMessage(senderID, text) }, 1500)
+
+        setTimeout(function () {
+          text = 'อุณหภูมิต่ำสุด ' + res.main.temp_min
+          sendTextMessage(senderID, text)
+        }, 1000)
+        setTimeout(function () {
+          text = 'อุณหภูมิสูงสุด ' + res.main.temp_max
+          sendTextMessage(senderID, text) 
+        }, 1500)
       })
 
       // test += res.main
