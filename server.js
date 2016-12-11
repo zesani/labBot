@@ -72,10 +72,11 @@ function receivedMessage(event) {
         res = JSON.parse(response.entity)
         console.log('test////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('temp: ', res.main)
-
-        text.push('วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp)
         text.push('อุณหภูมิต่ำสุด ' + res.main.temp_min)
         text.push('อุณหภูมิสูงสุด ' + res.main.temp_max)
+        text.push('วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp)
+
+
         text.forEach(text => {
          sendTextMessage(senderID, text)
         })
