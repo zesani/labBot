@@ -72,7 +72,9 @@ function receivedMessage(event) {
         res = JSON.parse(response.entity)
         console.log('test////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('temp: ', res.main)
-        text += 'In ' + messageText + ' temp now ' + res.main.temp
+        text = 'วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp
+        sendTextMessage(senderID, text)
+        text = 'สภาพอากาศ ' + res.weather.main
         sendTextMessage(senderID, text)
       })
 
