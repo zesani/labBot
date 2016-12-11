@@ -74,10 +74,11 @@ function receivedMessage(event) {
         text[2] = ('อุณหภูมิต่ำสุด ' + res.main.temp_min + 'องศา')
         text[1] = ('อุณหภูมิสูงสุด ' + res.main.temp_max + 'องศา')
         text[0] = ('วันนี้อุณหภูทิที่ ' + res.name + ' อุณหภูมิ ' + res.main.temp + 'องศา')
-        // text[3] = ('แรงลม ' + messageText + ' อุณหภูมิ ' + res.main.temp + 'องศา')
+        text[3] = ('แรงลม ' + res.wind.speed)
         setTimeout(function() {sendTextMessage(senderID, text[0]); }, 500)
         setTimeout(function() {sendTextMessage(senderID, text[1]); }, 1000)
         setTimeout(function() {sendTextMessage(senderID, text[2]); }, 1500)
+        setTimeout(function() {sendTextMessage(senderID, text[3]); }, 2000)
       })
 
       // test += res.main
