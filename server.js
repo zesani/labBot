@@ -74,7 +74,10 @@ function receivedMessage(event) {
         console.log('temp: ', res.main)
         text = 'วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp
         sendTextMessage(senderID, text)
-        text = 'สภาพอากาศ ' + res.weather.main
+        // text = 'สภาพอากาศ ' + res.weather.main
+        text = 'อุณหภูมิต่ำสุด ' + res.main.temp_min
+        sendTextMessage(senderID, text)
+        text = 'อุณหภูมิสูงสุด ' + res.main.temp_max
         sendTextMessage(senderID, text)
       })
 
