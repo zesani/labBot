@@ -62,7 +62,7 @@ function receivedMessage(event) {
   var messageAttachments = message.attachments;
 
   if (messageText) {
-    var res = {}
+    var res
     var test = ''
     if (messageText) {
       sendTextMessage(senderID, 'request')
@@ -73,7 +73,7 @@ function receivedMessage(event) {
 
       })
       console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
-      console.log('temp: ', res.temp)
+      console.log('temp: ', res)
       // test += res.main
       // sendTextMessage(senderID, test)
     }
