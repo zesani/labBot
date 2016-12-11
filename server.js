@@ -74,14 +74,16 @@ function receivedMessage(event) {
         text.push('อุณหภูมิต่ำสุด ' + res.main.temp_min)
         text.push('อุณหภูมิสูงสุด ' + res.main.temp_max)
         text.push('วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp)
+
+      })
+      if (text.length > 0) {
         text.forEach(text => {
          sendTextMessage(senderID, text)
          setTimeout(function() {sendTextMessage(senderID, text); }, 500)
          setTimeout(function() {sendTextMessage(senderID, text); }, 1000)
          setTimeout(function() {sendTextMessage(senderID, text); }, 1500)
         })
-      })
-
+      }
       // test += res.main
       // sendTextMessage(senderID, test)
     }
