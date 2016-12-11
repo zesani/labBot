@@ -71,7 +71,7 @@ function receivedMessage(event) {
         console.log(typeof x)
         console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
       })
-      sendTextMessage(senderID, x)
+      sendTextMessage(senderID, x.substring(1, 5))
     }
 
     // If we receive a text message, check to see if it matches a keyword
