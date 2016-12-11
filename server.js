@@ -63,15 +63,17 @@ function receivedMessage(event) {
 
   if (messageText) {
     var res
-    var test = ''
+    var text = ''
     if (messageText) {
       sendTextMessage(senderID, 'request')
       rest('http://api.openweathermap.org/data/2.5/weather?q=' + messageText + ',uk&appid=0635e78a93c863934f5d9af02d1db74a').then(function (response) {
         console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('response: ', response.entity)
-        res = JSON.parse(response.entity)
+        res = JSON.parse(response.entity.main)
         console.log('test////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('temp: ', res)
+        text += 'temp now' + res.temp
+        sendTextMessage(senderID, text)
       })
 
       // test += res.main
