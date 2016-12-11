@@ -65,11 +65,11 @@ function receivedMessage(event) {
   if (messageText) {
     if (messageText === 'hello') {
       sendTextMessage(senderID, "request")
-      rest('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
+      rest('http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
+        console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('response: ', response)
         x = JSON.parse(response)
         console.log(typeof x)
-        console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
       })
       sendTextMessage(senderID, x.substring(1, 40))
     }
