@@ -65,7 +65,7 @@ function receivedMessage(event) {
     var res
     var text = []
     if (messageText) {
-      rest('http://api.openweathermap.org/data/2.5/weather?q=' + messageText + ',th&appid=0635e78a93c863934f5d9af02d1db74a').then(function (response) {
+      rest('http://api.openweathermap.org/data/2.5/weather?q=' + messageText + ',th&units=metric&appid=0635e78a93c863934f5d9af02d1db74a').then(function (response) {
         console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('response: ', response.entity)
         res = JSON.parse(response.entity)
