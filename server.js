@@ -74,7 +74,7 @@ function receivedMessage(event) {
       // sendTextMessage(senderID, x.substring(1, 40))
       rest('http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
         console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
-        console.log('response: ', response)
+        console.log('response: ', response.entity)
       })
     }
     // If we receive a text message, check to see if it matches a keyword
