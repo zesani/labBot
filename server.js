@@ -72,6 +72,7 @@ function receivedMessage(event) {
         res = JSON.parse(response)
 
       })
+      console.log('response: ', res.weather)
       test += res.weather.main
       sendTextMessage(senderID, test)
     }
