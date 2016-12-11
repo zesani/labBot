@@ -76,7 +76,7 @@ function receivedMessage(event) {
         console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('response: ', response.entity)
         x = JSON.parse(response)
-        sendTextMessage(senderID, x.substring(1, 40))
+        sendTextMessage(senderID, response.entity.substring(1, 40))
       })
     }
     // If we receive a text message, check to see if it matches a keyword
