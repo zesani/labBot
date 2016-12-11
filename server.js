@@ -80,11 +80,6 @@ function receivedMessage (event) {
   if (messageText) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
-    var point = parseInt(messageText)
-    if (point >= 80 && point <= 100) {
-      sendTextMessage(senderID, 'A')
-    }
-
 
     switch (messageText) {
       case 'generic':
