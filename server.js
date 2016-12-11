@@ -76,6 +76,9 @@ function receivedMessage(event) {
         text.push('วันนี้อุณหภูทิที่ ' + messageText + ' อุณหภูมิ ' + res.main.temp)
         text.forEach(text => {
          sendTextMessage(senderID, text)
+         setTimeout(function() {sendTextMessage(senderID, text); }, 500)
+         setTimeout(function() {sendTextMessage(senderID, text); }, 1000)
+         setTimeout(function() {sendTextMessage(senderID, text); }, 1500)
         })
       })
 
