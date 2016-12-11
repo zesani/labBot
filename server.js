@@ -72,7 +72,7 @@ function receivedMessage(event) {
         res = JSON.parse(response.entity)
         console.log('test////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
         console.log('temp: ', res.main)
-        text += 'temp now' + res.temp
+        text += 'temp now' + res.main.temp
         sendTextMessage(senderID, text)
       })
 
