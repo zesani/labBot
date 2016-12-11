@@ -64,10 +64,11 @@ function receivedMessage(event) {
 
   if (messageText) {
     if (messageText === 'hello') {
-      sendTextMessage(senderID, "ควยเอ้ย ไม่รู้ request");
+      sendTextMessage(senderID, "ควยเอ้ย ไม่รู้ request")
       rest('http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=0635e78a93c863934f5d9af02d1db74a').then(function(response) {
         console.log('response: ', response)
-        console.log('test')
+          sendTextMessage(senderID, response)
+        console.log('test//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
       })
     }
 
